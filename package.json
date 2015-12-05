@@ -1,0 +1,18 @@
+{
+  "name": "fieldmouse",
+  "version": "1.0.0",
+  "description": "A command line tool for populating environment variables of a Marathon configuration file from current production values.",
+  "main": "src/index.js",
+  "bin": {
+    "fieldmouse": "bin/fieldmouse.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/goguardian/fieldmouse.git"
+  },
+  "author": "Tim Studd",
+  "license": "MIT",
+  "dependencies": {
+    "readline-sync": "^1.2.21"
+  }
+}
