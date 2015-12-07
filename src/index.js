@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var http = require('http');
+var path = require('path');
 var prompt = require('readline-sync').question;
 
 var _actions = {
@@ -23,7 +24,11 @@ var _actions = {
    * Performs the retrieval of Marathon application environment variables and
    * populates the values in marathon.json
    */
-  nibble: function() {
+  nibble: function(configPath) {
+    if (typeof configPath !== 'undefined' && configPath !== '') {
+      this.marathonPath = path.resolve(configPath);
+    }
+
     // Retrieve the host address
     var host;
     try {
@@ -38,7 +43,7 @@ var _actions = {
     try {
       configFile = fs.readFileSync(this.marathonPath);
     } catch (e) {
-      console.log('Could not locate marathon.json in current directory.');
+      console.log('Could not locate marathon.json at', this.marathonPath);
       return;
     }
 
