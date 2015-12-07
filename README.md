@@ -17,3 +17,6 @@ A command line tool for populating environment variables of a Marathon configura
 
 
 ```$ fieldmouse nibble``` - Execute the population of environment variables
+
+
+```$ fieldmouse nibble ../some/app/path/config.json``` - Execute the population of environment variables for a specified marathon configuration file
