@@ -14,7 +14,7 @@ var _actions = {
    * ~/.fieldmouse
    */
   configure: function() {
-    var defaultHost = this._getHost() || '127.0.0.1:8080'
+    var defaultHost = this._getHost() || '127.0.0.1:8080';
     var host = prompt('What is your Marathon host? [' + defaultHost + '] ') ||
       defaultHost;
     fs.writeFileSync(this.configPath, host);
