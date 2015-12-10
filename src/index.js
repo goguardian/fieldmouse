@@ -14,8 +14,9 @@ var _actions = {
    * ~/.fieldmouse
    */
   configure: function() {
-    var host = prompt('What is your Marathon host? [127.0.0.1:8080] ') ||
-      '127.0.0.1:8080';
+    var defaultHost = this._getHost() || '127.0.0.1:8080';
+    var host = prompt('What is your Marathon host? [' + defaultHost + '] ') ||
+      defaultHost;
     fs.writeFileSync(this.configPath, host);
     console.log('Marathon host set to:', host);
   },
@@ -30,10 +31,8 @@ var _actions = {
     }
 
     // Retrieve the host address
-    var host;
-    try {
-      host = fs.readFileSync(this.configPath);
-    } catch (e) {
+    var host = this._getHost();
+    if (host === '') {
       console.log('Could not load Marathon host.  Run configure.');
       return;
     }
@@ -62,6 +61,19 @@ var _actions = {
     }.bind(this)).on('error', function(e) {
       console.log('Error:', e);
     });
+  },
+
+  /**
+   * Attempts to load the host address from the config path
+   *
+   * @return {string} host address
+   */
+  _getHost: function() {
+    try {
+      return fs.readFileSync(this.configPath).toString('utf8');
+    } catch (e) {
+      return '';
+    }
   },
 
   /**
