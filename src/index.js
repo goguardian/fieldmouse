@@ -33,7 +33,7 @@ var _actions = {
     // Retrieve the host address
     var host = this._getHost();
     if (host === '') {
-      console.log('Could not load Marathon host.  Run configure.');
+      console.log('Could not load Marathon host.  Run `fieldmouse configure`.');
       return;
     }
 
