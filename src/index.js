@@ -13,7 +13,11 @@ var _actions = {
    * Uploads the given Marathon configuration to Marathon, first checking that
    * the configuration has an image tag and non-empty environment variables
    */
-  shipit: function () {
+  shipit: function (configPath) {
+    if (typeof configPath !== 'undefined' && configPath !== '') {
+      this.marathonPath = path.resolve(configPath);
+    }
+
     var config = this._loadConfig();
     if (!config) {
       return;
@@ -93,7 +97,7 @@ var _actions = {
   },
 
   version: function () {
-    console.log('1.1.0');
+    console.log('1.1.1');
   },
 
   /**
