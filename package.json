@@ -1,6 +1,6 @@
 {
   "name": "fieldmouse",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A command line tool for populating environment variables of a Marathon configuration file from current production values.",
   "main": "src/index.js",
   "bin": {
