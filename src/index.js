@@ -38,12 +38,14 @@ var _actions = {
       }
     }
 
-    // Check environment variables
-    for (var key of Object.keys(config.env)) {
-      if (config.env[key] === '') {
-        var response = prompt('Environment variable "' + key + '" is empty, do you want to continue [N/y]?') || 'n';
-        if (response !== 'y') {
-          return;
+    // Check environment variables if any are defined
+    if (config.env) {
+      for (var key of Object.keys(config.env)) {
+        if (config.env[key] === '') {
+          var response = prompt('Environment variable "' + key + '" is empty, do you want to continue [N/y]?') || 'n';
+          if (response !== 'y') {
+            return;
+          }
         }
       }
     }
@@ -97,7 +99,7 @@ var _actions = {
   },
 
   version: function () {
-    console.log('1.1.1');
+    console.log('1.1.2');
   },
 
   /**
